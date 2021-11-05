@@ -1,4 +1,4 @@
-package ru.klokov.restguitarproject.controller;
+package ru.klokov.restguitarproject.controller.admin;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/progress")
-public class ProgressController {
+public class AdminProgressController {
 
-    @GetMapping("/showProgress")
-    public String showProgress () {
+    @GetMapping("/show")
+    public String show() {
         return "Accords: \n" +
                 "Beats: \n" +
                 "Fingerpickings: \n" +

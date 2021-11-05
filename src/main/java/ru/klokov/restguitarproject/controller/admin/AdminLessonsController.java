@@ -1,4 +1,4 @@
-package ru.klokov.restguitarproject.controller;
+package ru.klokov.restguitarproject.controller.admin;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/lessons")
-public class LessonsController {
+public class AdminLessonsController {
 
-    @GetMapping("/showLessons")
-    public String showLessons () {
+    @GetMapping("/show")
+    public String show() {
         return "Lessons: ";
     }
 }
