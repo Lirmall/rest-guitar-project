@@ -1,9 +1,9 @@
 package ru.klokov.restguitarproject.service.utils;
 
-import ru.klokov.restguitarproject.model.dto.AccordDTO;
+import ru.klokov.restguitarproject.model.dto.AdminDTO;
 
 public interface FileRecorder {
 
-    void add(AccordDTO accordDTO, String filePath);
+    void add(AdminDTO adminDTO);
 
 }

@@ -3,17 +3,19 @@ package ru.klokov.restguitarproject.model.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 
-public class AccordDTO {
+public class AccordDTO implements AdminDTO {
     String name;
     String fingerPosition;
-    MultipartFile image;
+    MultipartFile file;
+    static final String endFilePath = "\\accords\\";
 
-    public AccordDTO(String name, String fingerPosition, MultipartFile image) {
+    public AccordDTO(String name, String fingerPosition, MultipartFile file) {
         this.name = name;
         this.fingerPosition = fingerPosition;
-        this.image = image;
+        this.file = file;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -30,13 +32,15 @@ public class AccordDTO {
         this.fingerPosition = fingerPosition;
     }
 
-    public MultipartFile getImage() {
-        return image;
+    public MultipartFile getFile() {
+        return file;
     }
 
-    public void setImage(MultipartFile image) {
-        this.image = image;
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
-
+    public String getEndFilePath() {
+        return endFilePath;
+    }
 }

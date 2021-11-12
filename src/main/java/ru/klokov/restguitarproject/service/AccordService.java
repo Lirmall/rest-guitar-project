@@ -7,14 +7,13 @@ import ru.klokov.restguitarproject.service.utils.FileRecorder;
 @Service
 public class AccordService {
 
-    FileRecorder imageRecorder;
-    private static final String imagePath = "J:\\Develop\\rest-guitar-project\\src\\main\\resources\\static\\images\\accords\\";
+    FileRecorder imageFileRecorder;
 
-    public AccordService(FileRecorder imageRecorder) {
-        this.imageRecorder = imageRecorder;
+    public AccordService(FileRecorder imageFileRecorder) {
+        this.imageFileRecorder = imageFileRecorder;
     }
 
     public void add (AccordDTO accordDTO) {
-        imageRecorder.add(accordDTO, imagePath);
+        imageFileRecorder.add(accordDTO);
     }
 }
