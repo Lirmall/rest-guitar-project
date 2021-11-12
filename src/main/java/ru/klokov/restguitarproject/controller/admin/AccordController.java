@@ -25,8 +25,8 @@ public class AccordController {
 
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Response add(@RequestPart("name") @NotBlank String name,
-                    @RequestPart("fingerPosition") @NotBlank String fingerPosition,
-                    @RequestPart("image") @NotBlank MultipartFile image) {
+                        @RequestPart("fingerPosition") @NotBlank String fingerPosition,
+                        @RequestPart("image") @NotBlank MultipartFile image) {
 
         AccordDTO accordDTO = new AccordDTO(name, fingerPosition, image);
         accordService.add(accordDTO);

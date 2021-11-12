@@ -2,12 +2,11 @@ package ru.klokov.restguitarproject.model.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
-
 public class AccordDTO implements AdminDTO {
     String name;
     String fingerPosition;
     MultipartFile file;
-    static final String endFilePath = "\\accords\\";
+    DTOType type = DTOType.ACCORD;
 
     public AccordDTO(String name, String fingerPosition, MultipartFile file) {
         this.name = name;
@@ -40,7 +39,8 @@ public class AccordDTO implements AdminDTO {
         this.file = file;
     }
 
-    public String getEndFilePath() {
-        return endFilePath;
+    @Override
+    public DTOType getType() {
+        return type;
     }
 }

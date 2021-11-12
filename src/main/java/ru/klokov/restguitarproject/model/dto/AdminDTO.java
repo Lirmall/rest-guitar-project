@@ -5,5 +5,5 @@ import org.springframework.web.multipart.MultipartFile;
 public interface AdminDTO {
     String getName();
     MultipartFile getFile();
-    String getEndFilePath();
+    DTOType getType();
 }
