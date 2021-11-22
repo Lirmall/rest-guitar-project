@@ -1,10 +1,7 @@
 package ru.klokov.restguitarproject.controller.admin;
 
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.klokov.restguitarproject.controller.admin.response.Response;
 import ru.klokov.restguitarproject.model.dto.AccordDTO;
@@ -24,8 +21,8 @@ public class AccordController {
     }
 
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response add(@RequestPart("name") @NotBlank String name,
-                        @RequestPart("fingerPosition") @NotBlank String fingerPosition,
+    public Response add(@RequestParam("name") @NotBlank String name ,
+                        @RequestParam("fingerPosition") @NotBlank String fingerPosition,
                         @RequestPart("image") @NotBlank MultipartFile image) {
 
         AccordDTO accordDTO = new AccordDTO(name, fingerPosition, image);
