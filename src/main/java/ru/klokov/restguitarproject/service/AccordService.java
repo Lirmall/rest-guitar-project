@@ -13,7 +13,7 @@ public class AccordService {
         this.imageFileRecorder = imageFileRecorder;
     }
 
-    public void add (AccordDTO accordDTO) {
+    public void add(AccordDTO accordDTO) {
         imageFileRecorder.add(accordDTO);
     }
 }
