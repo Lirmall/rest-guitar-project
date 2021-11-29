@@ -9,6 +9,8 @@ import ru.klokov.restguitarproject.model.dto.AccordDTO;
 import ru.klokov.restguitarproject.service.AccordService;
 import ru.klokov.restguitarproject.service.utils.FileRecorder;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,7 +28,7 @@ public class AccordServiceTests {
     ArgumentCaptor<AccordDTO> accordDTOCaptor;
 
     @Test
-    public void add() {
+    public void add() throws IOException {
 
         AccordDTO testAccordDTO = new AccordDTO("testAccordDTO", "II2", testMockMultipartFile);
 
