@@ -8,6 +8,7 @@ import ru.klokov.restguitarproject.model.dto.AccordDTO;
 import ru.klokov.restguitarproject.service.AccordService;
 
 import javax.validation.constraints.NotBlank;
+import java.io.IOException;
 
 
 @RestController
@@ -23,7 +24,7 @@ public class AccordController {
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Response add(@RequestParam("name") @NotBlank String name ,
                         @RequestParam("fingerPosition") @NotBlank String fingerPosition,
-                        @RequestPart("image") @NotBlank MultipartFile image) {
+                        @RequestPart("image") @NotBlank MultipartFile image) throws IOException {
 
         AccordDTO accordDTO = new AccordDTO(name, fingerPosition, image);
         accordService.add(accordDTO);
