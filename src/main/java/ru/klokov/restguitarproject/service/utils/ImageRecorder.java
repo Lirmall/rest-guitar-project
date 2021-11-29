@@ -5,37 +5,36 @@ import ru.klokov.restguitarproject.model.dto.AdminDTO;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 @Component
 public class ImageRecorder implements FileRecorder {
 
-    private static final String imagePath = "J:\\Develop\\rest-guitar-project\\src\\main\\resources\\static\\images\\";
-
-    public void add(AdminDTO adminDTO) {
-        String endFilePath;
-        endFilePath = getString(adminDTO);
-        try (BufferedOutputStream bufferedStream = new BufferedOutputStream(
-                new FileOutputStream(
-                        imagePath + endFilePath + adminDTO.getName() + ".jpg"))) {
-            byte[] imageBytes = adminDTO.getFile().getBytes();
-            bufferedStream.write(imageBytes);
-        } catch (Exception e) {
-            System.out.println("File not upload " + e);
-        }
+    public void add(AdminDTO adminDTO) throws IOException {
+        String filePath = getFilePath(adminDTO);
+        write(adminDTO, filePath);
     }
 
-    private String getString(AdminDTO adminDTO) {
-        String endFilePath;
+    public void write(AdminDTO adminDTO, String filePath) throws IOException {
+        BufferedOutputStream bufferedStream = new BufferedOutputStream(new FileOutputStream(filePath + adminDTO.getName() + ".jpg"));
+        byte[] imageBytes = adminDTO.getFile().getBytes();
+        bufferedStream.write(imageBytes);
+        bufferedStream.close();
+    }
+
+    public String getFilePath(AdminDTO adminDTO) {
+        String filePath;
         switch (adminDTO.getType()) {
             case ACCORD:
-                endFilePath = "\\accords\\";
+                filePath = "J:\\Develop\\rest-guitar-project\\src\\main\\resources\\static\\images\\accords\\";
                 break;
             case BEAT:
-                endFilePath = "\\beats\\";
+                filePath = "J:\\Develop\\rest-guitar-project\\src\\main\\resources\\static\\images\\beats\\";
                 break;
             default:
-                endFilePath = "";
+                filePath = "J:\\Develop\\rest-guitar-project\\src\\main\\resources\\static\\images\\";
+                break;
         }
-        return endFilePath;
+        return filePath;
     }
 }
